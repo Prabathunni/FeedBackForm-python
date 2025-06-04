@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Intern Feedback Form</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      margin: 0; padding: 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 30px 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 420px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #34495e;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    textarea {
+      min-height: 80px;
+    }
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+    .star-rating input[type="radio"] {
+      display: none;
+    }
+    .star-rating label {
+      font-size: 26px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s ease-in-out;
+      user-select: none;
+      margin-left: 5px;
+    }
+    .star-rating input[type="radio"]:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: #f39c12;
+    }
+    button {
+      margin-top: 25px;
+      background: #2980b9;
+      color: white;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 7px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #1c5980;
+    }
+    #summary {
+      margin-top: 30px;
+      background: #dff0d8;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #a3d3a1;
+      display: none;
+      color: #3c763d;
+    }
+    #summary h2 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Intern Feedback Form</h1>
+    <form method="POST">
+      {% csrf_token %}
+
+      <label>Intern's Full Name *</label>
+      {{ form.name }}
+
+      <label>Email Address *</label>
+      {{ form.email }}
+
+      <label>Internship Period *</label>
+      {{ form.start_date }}
+      {{ form.end_date }}
+
+      <label>Supervisor's Name</label>
+      {{ form.supervisor_name }}
+
+      <label>Rate your internship experience *</label>
+      {{ form.experience_rating }}
+
+      <label>What skills did you learn? *</label>
+      {{ form.skills_learned }}
+
+      <label>Overall satisfaction *</label>
+      <div class="star-rating">
+        {% for radio in form.overall_satisfaction %}
+          {{ radio.tag }}
+          <label for="{{ radio.id_for_label }}">★</label>
+        {% endfor %}
+      </div>
+
+      <label>Suggestions for improvement</label>
+      {{ form.suggestions }}
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+</body>
+</html>
