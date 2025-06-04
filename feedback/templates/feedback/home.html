@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback Portal</title>
+</head>
+<body style="
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #9face6);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+">
+  <div style="
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  ">
+    <h1 style="margin-bottom: 15px; color: #333;">Welcome to Our Feedback Portal</h1>
+    <p style="margin-bottom: 25px; color: #555;">Your opinion matters! Click below to submit your feedback.</p>
+    <a href="/feedback" style="
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #4a4eff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    "
+    onmouseover="this.style.backgroundColor='#3a3edd'"
+    onmouseout="this.style.backgroundColor='#4a4eff'"
+    >Give Feedback</a>
+  </div>
+</body>
+</html>

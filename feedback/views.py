@@ -10,3 +10,6 @@ def submit_feedback(request):
     else:
         form = FeedbackForm()
     return render(request, 'feedback/feedback_form.html', {'form': form})
+
+def home(request):
+    return render(request,'feedback/home.html')
